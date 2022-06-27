@@ -24,29 +24,6 @@ class CartController extends Controller
         $this->cartService = new CartService();
     }
 
-    public function demoAddCart(){
-
-        $payload =  json_decode('{
-                "id": "159|272",
-                "item_data": {
-                    "name": "Great Taste Plantain Chips",
-                    "link": "https://ssbafricanfoods.com/store/159/selected/Great-Taste-Plantain-Chips",
-                    "image": "https://app.ssbafricanfoods.com/images/companies/app-ssbafricanfoods-com//products/small/105.jpg",
-                    "price": 0.79,
-                    "qty": 1,
-                    "size": 0.50
-                },
-                "reduced": 1
-            }');
-
-        $params = (array) $payload;
-
-        $response = $this->proAddToCart(map_request($params));
-
-        dd($response);
-
-    }
-
     /**
      * This check if coupon code is added already or not
      */
