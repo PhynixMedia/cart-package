@@ -1,0 +1,24 @@
+{
+    "name": "phynix/cart",
+    "description": "Cart Package",
+    "authors": [
+        {
+            "name": "Phynix Media",
+            "email": "david.adebayo@phynixmedia.co.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Cart\\App\\":"src"
+        }
+    },
+    "extra": {
+        "laravel":{
+            "providers":[
+                "Cart\\App\\CartServiceProvider"
+            ]
+        }
+    }
+}
