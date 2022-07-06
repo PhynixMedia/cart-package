@@ -14,7 +14,7 @@ Route::group(['middleware' => ['web']], function ()
     Route::prefix('cart')->group(function ()
     {
 
-        Route::get('test/add/item', 'Cart\App\Controllers\CartController@demoAddCart');
+//        Route::get('test/add/item', 'Cart\App\Controllers\CartController@demoAddCart');
 
         /**
          * ROUTE FOR CART / SHOPPING BASKET

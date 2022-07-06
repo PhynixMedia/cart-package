@@ -2,10 +2,8 @@
 
 namespace Cart\App\Controllers;
 
-use Cart\App\Requests\CreateCartRequests;
 use Cart\App\Requests\UpdateCartDeliveryRequests;
 use Cart\App\Services\CartService;
-use Cart\App\Services\CheckoutService;
 use Cart\App\Traits\Checkout;
 
 use App\Http\Controllers\Controller;
