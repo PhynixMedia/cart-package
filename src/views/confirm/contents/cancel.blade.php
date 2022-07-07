@@ -69,7 +69,7 @@
                                     <div class="col-md-12 col-lg-8">
 
                                         <div class="continue-shopping">
-                                            <a href="{{ route('stripe.checkout') }}"><i class="fa fa-arrow-left"></i> Back to MAKE PAYMENT</a>
+{{--                                            <a href="{{ route('stripe.checkout') }}"><i class="fa fa-arrow-left"></i> Back to MAKE PAYMENT</a>--}}
                                         </div>
                                         
                                     </div>

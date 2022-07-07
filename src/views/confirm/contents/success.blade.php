@@ -11,7 +11,7 @@
                             <div class="col-md-12 col-lg-12">
                                 <div class="price-table-heading">
                                     
-                                    @include("cart::includes.logo",["ispay"=>true, "status"=>true])
+{{--                                    @include("cart::includes.logo",["ispay"=>true, "status"=>true])--}}
 
                                 </div>
                             </div>

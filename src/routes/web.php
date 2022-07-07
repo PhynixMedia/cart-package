@@ -24,6 +24,8 @@ Route::group(['middleware' => ['web']], function ()
         Route::post('/update/item/quantity', 'Cart\App\Controllers\CartController@updateCart');
         Route::post('/add/item', 'Cart\App\Controllers\CartController@proAddToCart');
         Route::post('/delivery/option/update', 'Cart\App\Controllers\CartController@delivery');
+        Route::get('/checkout/success', 'Cart\App\Controllers\CartController@success')->name('checkout.success');
+        Route::get('/checkout/cancel', 'Cart\App\Controllers\CartController@cancel')->name('checkout.cancel');
 
         /**
          * ROUTE FOR VOUCHER AND DISCOUNT CODE

@@ -94,10 +94,10 @@ class CartController extends Controller
         session()->flash('success');
         session()->save();
 
-        if($this->route_check()){
-            session()->flash('success', 'Order successfully checked out');
-            session()->save();
-        }
+//        if($this->route_check()){
+//            session()->flash('success', 'Order successfully checked out');
+//            session()->save();
+//        }
 
         clear_seesion();
 
@@ -114,10 +114,10 @@ class CartController extends Controller
         session()->flash('error');
         session()->save();
 
-        if($this->route_check()){
-            session()->flash('error', 'Order was declined, Please, verify with your bank then try again');
-            session()->save();
-        }
+//        if($this->route_check()){
+//            session()->flash('error', 'Order was declined, Please, verify with your bank then try again');
+//            session()->save();
+//        }
 
         $status = "error";
         return view('cart::confirm.view', compact("status"));
@@ -138,5 +138,15 @@ class CartController extends Controller
         }
         return false;
     }
+
+//    public function confirm(Request $request){
+//
+//        if($request->get("status") == "success"){
+//            $this->cartService->empty();
+//        }
+//
+//        $response = (object) $request->all();
+//        return view("stripe-app::confirm", compact('response'));
+//    }
 
 }
