@@ -10,6 +10,9 @@ class SessionService
     public static function get($productid = false){
 
         $cart = session()->get('cart');
+        if(is_string($cart)){
+            $cart = json_decode($cart);
+        }
 
         if($cart && $productid){
 
