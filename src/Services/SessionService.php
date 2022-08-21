@@ -70,6 +70,11 @@ class SessionService
             session()->put('cart', $cart);
             session()->save();
 
+            /**
+             * Save Data into Cart Cookies
+             */
+            _cookie("cart", $cart);
+
             return self::get();
     }
 
