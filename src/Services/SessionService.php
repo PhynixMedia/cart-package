@@ -73,7 +73,7 @@ class SessionService
             /**
              * Save Data into Cart Cookies
              */
-            _cookie("cart", $cart);
+            _cookie("cart", json_encode($cart));
 
             return self::get();
     }
