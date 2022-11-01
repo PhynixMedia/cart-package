@@ -29,44 +29,48 @@ class SessionService
      */
     public static function set($request){
 
-        $oldcart = $cart = self::get();
+        try {
 
-        //clear old cart
-        self::clear();
+            $oldcart = $cart = self::get();
+
+            //clear old cart
+            self::clear();
 
             //continue from here
-            if($cart){
-                if(count($cart) == 0){ $cart = []; }
+            if ($cart) {
+                if (count($cart) == 0) {
+                    $cart = [];
+                }
             }
 
             $productid = $request->get('id');
             $item_data = $request->get('item_data');
             $isReduced = $request->get('reduced');
 
-            if(is_object($cart)) { $cart = (array) $cart; }
-           
-            if(array_key_exists($productid, (array) $cart)){
+            if (is_object($cart)) {
+                $cart = (array)$cart;
+            }
 
-                if($isReduced == 0){
-                    $cart[$productid]['qty'] -= 1; 
-                }else{ 
+            if (array_key_exists($productid, (array)$cart)) {
+
+                if ($isReduced == 0) {
+                    $cart[$productid]['qty'] -= 1;
+                } else {
 
                     $qty = $item_data['qty'] ?? 0;
 
-                    if($qty > 1)
-                    {
-                        $cart[$productid]['qty'] += $qty; 
-                    }else
-                    {
-                        $cart[$productid]['qty'] += 1; 
+                    if ($qty > 1) {
+                        $cart[$productid]['qty'] += $qty;
+                    } else {
+                        $cart[$productid]['qty'] += 1;
                     }
                 }
-                
-                if($cart[$productid]['qty'] < 1){
-                    $cart[$productid]['qty'] = 1 ;
+
+                if ($cart[$productid]['qty'] < 1) {
+                    $cart[$productid]['qty'] = 1;
                 }
-                
-            }else{
+
+            } else {
                 $cart[$productid] = $item_data;
             }
 
@@ -76,12 +80,22 @@ class SessionService
             /**
              * Save Data into Cart Cookies
              */
-            if($cookie_cart = json_decode(_cookie("cart") ?? "{}")){
-                $data = array_merge($cookie_cart, $cart);
-                _cookie("cart", json_encode($data));
+            if ($cookie = _cookie("cart")) {
+
+                if ($cookie_cart = json_decode($cookie)) {
+                    if (is_array($cookie_cart)) {
+                        $data = array_merge($cookie_cart, $cart);
+                        _cookie("cart", json_encode($data));
+                    }
+                }
             }
 
-            return self::get();
+        }catch(\Exception $e){
+
+            logger("Cart :: SessionService Error:: " . $e->getMessage());
+        }
+
+        return self::get();
     }
 
     /**
