@@ -76,8 +76,7 @@ class SessionService
             /**
              * Save Data into Cart Cookies
              */
-            if($data = json_encode(_cookie("cart") ?? "{}")){
-
+            if($data = json_encode(_cookie("cart") ?? [])){
                 $data = array_merge($data, $cart);
                 _cookie("cart", json_encode($data));
             }
